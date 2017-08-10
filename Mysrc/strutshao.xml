@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Struts 2配置文件的DTD信息 -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="Order" extends="struts-default">
+		<interceptors>
+			<interceptor name="logininterceptor" class="org.crazyit.Interceptor.LoginInterceptor"></interceptor>
+		</interceptors>
+		
+		<action name="user*" class="org.crazyit.booksys.action.OrderAction" 
+			method="{1}">
+			<result>/jsp/jspOfHao/OrdersShow.jsp</result>
+			<result name="detail">/jsp/jspOfHao/orderdetail.jsp</result>
+			<result name="listorder">/jsp/jspOfHao/OrdersShow.jsp</result>
+			<result name="input">/jsp/jspOfLiang/error.jsp</result>
+			<result name="error">/jsp/jspOfHao/error.jsp</result>
+			<result name="address">/jsp/jspOfHao/selectAddress.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+ 			<interceptor-ref name="logininterceptor"></interceptor-ref>
+		</action>
+		
+		<action name="order*" class="org.crazyit.booksys.action.OrderAction"
+			method="{1}">
+			<result>/jsp/jspOfHao/manage/AllOderInfo.jsp</result>
+			<!-- 订单明细 -->
+			<result name="detail">/jsp/jspOfHao/manage/Oderdetail.jsp</result>
+			<result name="input">/jsp/jspOfLiang/error.jsp</result>
+			
+		</action>
+		
+		<action name="showBooks" class="org.crazyit.booksys.action.OrderAction"
+			method="list">
+			<result>/jsp/jspOfHao/showBooks.jsp</result>
+			<result name="input">/jsp/jspOfLiang/error.jsp</result>
+		</action>
+
+	</package>
+	
+</struts>

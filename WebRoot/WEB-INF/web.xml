@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="GBK"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+	http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<!-- spring������ -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+	<!--����ָ����applicationContent�ļ� -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:applicationContext_core.xml,
+			classpath:applicationContext_JJ.xml,
+			classpath:applicationContext_Dong.xml,
+			classpath:applicationContext_Hao.xml,
+		</param-value>
+	</context-param>
+	
+	
+	<!--Struts������  -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!--manage  -->
+	<filter>
+		<filter-name>ManageFilter</filter-name>
+		<filter-class>org.crazyit.Interceptor.ManageFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ManageFilter</filter-name>
+		<url-pattern>/jsp/jspOfDong/manage/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ManageFilter</filter-name>
+		<url-pattern>/jsp/jspOfHao/manage/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ManageFilter</filter-name>
+		<url-pattern>/jsp/jspOfLiang/manage/*</url-pattern>
+	</filter-mapping>
+</web-app>

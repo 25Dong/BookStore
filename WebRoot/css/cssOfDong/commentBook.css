@@ -1,0 +1,20 @@
+#content{
+	margin: 0px auto;
+	width:1035px;
+	padding:5px;
+}
+.mainNav,.footNav{
+	background-color: #D8ECF6!important;
+	border-radius: 4px;
+	
+}
+
+p#footfont{/*尾部字体样式*/
+	color:black!important;
+}
+.mainNav ul li a { 
+	color:black!important;
+}
+#foot{
+	padding: 0px!important;
+}

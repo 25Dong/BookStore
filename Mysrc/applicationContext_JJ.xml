@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	
+	<!-- 定义Service组件，并将DAO组件注入Service组件 -->	
+	<bean id="bookService" class="org.crazyit.booksys.service.impl.BookServiceImpl"
+		p:bookDao-ref="bookDao"/>
+	<bean id="fileuploadImpl" class="org.crazyit.component.FileuploadImpl"></bean>
+	<bean id="carService" class="org.crazyit.booksys.service.impl.CarServiceImpl">
+		<property name="carDao" ref="carDao"></property>
+	</bean>
+	<bean id="commentService" class="org.crazyit.booksys.service.impl.CommentServiceImpl"
+		p:commentDao-ref="commentDao">
+	</bean>
+	<bean id="orderdetailService" class="org.crazyit.booksys.service.impl.OrderdetailServiceImpl"
+		p:orderdetailDao-ref="orderdetailDao">
+		
+	</bean>
+	<!-- 定义DAO组件，并将SessionFactory注入DAO组件 -->		
+	<bean id="bookDao" class="org.crazyit.booksys.dao.impl.BookDaoHibernate4"
+		p:sessionFactory-ref="sessionFactory"/>
+	<bean id="carDao" class="org.crazyit.booksys.dao.impl.CarDaoHibernate4"
+		p:sessionFactory-ref="sessionFactory"/>
+	<bean id="orderdetailDao" class="org.crazyit.booksys.dao.impl.OrderdetailDaoHibernate4"
+		p:sessionFactory-ref="sessionFactory"/>
+	<bean id="commentDao" class="org.crazyit.booksys.dao.impl.CommentDaoHibernate4"
+		p:sessionFactory-ref="sessionFactory" />
+	
+
+<!-- 配置事务增强处理Bean,指定事务管理器 -->
+<tx:advice id="txAdvice" 
+	transaction-manager="transactionManager">
+	<!-- 用于配置详细的事务定义 -->
+	<tx:attributes>
+		<!-- 所有以'get'开头的方法是read-only的 -->
+		<tx:method name="get*" read-only="true"/>
+		<!-- 其他方法使用默认的事务设置，指定超时时长为5秒 -->
+		<tx:method name="*" isolation="DEFAULT"
+			propagation="REQUIRED" timeout="5"/>
+	</tx:attributes>
+</tx:advice>
+<!-- AOP配置的元素 -->
+<aop:config>
+	<!-- 配置一个切入点 -->
+	<aop:pointcut id="myPointcut" expression="execution(* org.crazyit.booksys.service.*.*(..))" />
+	<!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
+	<aop:advisor advice-ref="txAdvice" 
+		pointcut-ref="myPointcut"/>
+
+</aop:config>
+	
+</beans>

@@ -1,0 +1,27 @@
+#bookinfo{
+	border: 1px solid #EEEEEE!important;
+}
+
+#bookinfo img{
+	width: 200px;
+	height: 300px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	
+}
+#comment{
+	border: 1px solid #EEEEEE;
+	margin: 20px 0px;
+}
+.picture1 img{
+	width: 120px!important;
+	height: 164x!important;
+}
+#likeBook{
+	border: 1px solid #EEEEEE;
+	margin-bottom: 20px;
+}
+#bookIntroduction{
+	border: 1px solid #EEEEEE;
+}

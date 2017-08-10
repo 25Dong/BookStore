@@ -1,0 +1,123 @@
+/*后台的样式*/
+ul.nav-tabs {
+	width: 140px;
+	margin-top: 20px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+
+ul.nav-tabs li {
+	margin: 0;
+	border-top: 1px solid #ddd;
+}
+
+ul.nav-tabs li:first-child {
+	border-top: none;
+}
+
+ul.nav-tabs li a {
+	margin: 0;
+	padding: 8px 16px;
+	border-radius: 0;
+}
+
+ul.nav-tabs li.active1 a, ul.nav-tabs li.active1 a:hover {
+	color: black;
+	background: #D8ECF6;
+	border: 1px solid #D8ECF6;
+}
+ul.nav-tabs li.active2 a, ul.nav-tabs li.active2 a:hover {
+	color: black;
+	background: #DEEFD7;
+	border: 1px solid #DEEFD7;
+	
+}
+/*发布公告*/
+ul.nav-tabs li.active3 a, ul.nav-tabs li.active3 a:hover {
+	color: black;
+	background: #FFC0CB;
+	border: 1px solid #FFC0CB;
+	
+}
+/*新书上架*/
+ul.nav-tabs li.active5 a, ul.nav-tabs li.active5 a:hover {
+	color: black;
+	background: #FAF6E1;
+	border: 1px solid #FAF6E1;
+	
+}
+
+ul.nav-tabs li:first-child a {
+	border-radius: 4px 4px 0 0;
+}
+
+ul.nav-tabs li:last-child a {
+	border-radius: 0 0 4px 4px;
+}
+
+ul.nav-tabs.affix {
+	top: 30px; 
+}
+/*订单明细的样式*/
+#Oderdetail table{
+	width:815px;
+	text-align: center;
+	border:1px solid #FAF6E1;
+}
+/*脚部样式*/
+#foot{
+	text-align: center;
+	margin-top:20px;
+	padding-top:20px;
+	background-color: #F6F7F7;
+	border-radius: 5px;
+	height: 80px;
+	width: 1140px;
+	margin: auto;
+}
+/*6月5号*/
+.col-sm-2{
+	margin: 10px 0px;
+}
+.col-sm-8{
+	margin: 10px 0px;
+}
+/*所有图书的样式*/
+/*表格的样式*/
+.panel-body #bookTable{
+	border:1px solid #DEEFD7;
+	margin: 0px auto;
+	width: 815px;
+	
+} 
+.bookinfo img{
+	width: 225px;
+	height: 310px;
+}
+/*信息书本的信息的样式*/
+.bookinfocontent{
+	width:250px;
+	border:1px solid #DEEFD7;
+}
+/*6月6号*/
+/*查找图书页面 显示图书面板中表格的样式*/
+.panel-body #findbooKReinfo{
+	border:1px solid #FAF6E1;
+	margin: 0px auto;
+	width: 815px;
+} 
+.panel-body #allUserTable{
+	border:1px solid #D8ECF6;
+	margin: 0px auto;
+	width: 815px;
+} 
+.userinfo img{
+	width: 100px;
+	height: 100px;
+}
+/*用户基本的信息的样式*/
+.bookinfocontent{
+	width:250px;
+	border:1px solid #D8ECF6;
+}

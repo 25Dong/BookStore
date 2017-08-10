@@ -1,0 +1,223 @@
+body{
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+.navbar-default{
+    background-color: #fff;
+    border: none;
+    height: 90px;
+    box-shadow: 0px 2px 8px 0px rgba(50,50,50,0.25);
+}
+.navbar-default .navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F08080 ;
+    height: 75px;
+    line-height: 35px;
+}
+.navbar-default .navbar-nav>li>a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    height: 75px;
+    line-height: 35px;
+}
+.navbar-toggle{
+    margin-top: 17px;
+}
+
+.mainNav {
+    position:absolute;
+    top:53px;
+    left:50%;
+    margin-left:-495px;
+    height: 37px;
+    line-height: 37px;
+    width: 990px;
+    z-index:100;
+    background-color: #4A4A4A;
+    text-align: center;
+    color: white;
+}
+/*中间内容的样式*/
+#content{
+	background-color: red;
+	
+}
+
+.f-l{
+    float: left;
+}
+body, div, ul, ol, li, p, i, em, h1, h2, h3, h4, a, strong, span, img, form, input, textarea, button{
+    padding: 0;
+    margin:0;
+}
+body{
+    font-family:"Microsoft YaHei", "Simsun", Tahoma, Arial,"Helvetica Neue","Hiragino Sans GB", "sans-self";
+    font-size: 14px;
+    line-height: 24px;
+}
+
+input, textarea{
+    outline: none;
+}
+li{
+    list-style: none;
+}
+.pr{
+    position: relative;
+}
+.pa{
+    position: absolute;
+}
+.pf{
+    position: fixed;
+}
+.f-r{
+    float: right;
+}
+li, div, ul{
+    *zoom:1;
+}
+li:after, div:after, ul:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.tran{
+    transition:all 0.3s ease-out;
+    -webkit-transition:all 0.3s ease-out;
+    -moz-transition:all 0.3s ease-out;
+    -o-transition:all 0.3s ease-out;
+}
+
+.login-banner{
+    height: 260px\9;
+}
+.login-box{
+    width: 320px;
+    margin:0 auto;
+    overflow-x: hidden;
+}
+.box-con{
+
+    width: 1600px;
+}
+.login-con{
+
+    width: 300px;
+    margin:0 10px;
+}
+.login-box .form-group{
+    margin-top: 20px;
+}
+
+.login-box input, .signup-form{
+	width: 300px;
+	height:50px;
+	margin-top:5px;
+	line-height: 48px \9;
+	padding-left: 10px;
+	border: 1px #d9d9d9 solid;
+	border-radius: 5px;
+	font-size: 14px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	transition:all 0.3s ease-out;
+	-webkit-transition:all 0.3s ease-out;
+	-moz-transition:all 0.3s ease-out;
+}
+
+.login-box input:focus{
+    border-color: #03a9f4;
+    box-shadow: 0 0 15px #03a9f4;
+    -webkit-box-shadow: 0 0 15px #03a9f4;
+    -moz-box-shadow: 0 0 15px #03a9f4;
+}
+#loginButton,#registerButton{
+	 width: 300px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    border: 0;
+    background-color: #4A4A4A;
+    color: #fff;
+    border-radius: 5px;
+}
+#loginButton:HOVER,#registerButton:HOVER{
+	 padding-top: 3px;
+	 background-color: #808080;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.from-line{
+    height: 0;
+    overflow: hidden;
+    border-top: 1px #c2c2c2 solid;
+    margin-top: 20px;
+}
+
+.a-tag{
+    position: relative;
+    display: block;
+    height: 48px;
+    border: 1px #c2c2c2 solid;
+    text-align: center;
+    line-height: 48px;
+    color: #c2c2c2;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.blue-border{
+    border:1px #4A4A4A solid;
+    color: #4A4A4A;
+}
+
+.a-tag:hover{
+    background-color: #aaa;
+    color: #fff;
+}
+.blue-border:hover{
+    background-color: #4A4A4A;
+    color: #fff;
+}
+/*6月3号添加的样式*/
+/*注册时错误信息提醒*/
+#error{
+	color: red;
+	margin: 0 auto;
+	text-align: center;
+	
+}
+/*登录时的错误信息提醒*/
+#errorlogin{
+	color: red;
+	margin: 0 auto;
+	text-align: center;
+	
+}
+/*主要内容div添加一个黑色的边框*/
+#mainContent{
+	border:1px #4A4A4A solid;
+   
+	 margin:0 auto;
+	 width: 990px;
+	 
+}
+/*注册登录的页面的图片*/
+div #picture{
+	margin-bottom: 18px;
+	width: 100%;max-width: 550px;
+	border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+#bg{
+	width: 100%;max-width: 990px;
+	height: 250px;
+	
+	
+} 

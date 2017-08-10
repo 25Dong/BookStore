@@ -1,0 +1,26 @@
+.container{
+	width:1010px;
+	padding: 15px;
+}
+.mainNav,.footNav{
+	background-color: #F0DCDC!important;
+	border-radius: 4px;
+}
+p#footfont{/*尾部字体样式*/
+	color:black!important;
+}
+.mainNav ul li a { 
+	color:black!important;
+}
+#foot{
+	padding: 0px!important;
+}
+/*选择商品数量的样式*/
+.cfs { width: 30%; }
+.cfs a { cursor: pointer; }
+#cxsdd{text-align:center;}
+#cxsdd td{ height:35px;}
+#xianss{ height:40px; line-height:40px;}
+#in_num, #sp_num{ color:red; font-weight:bold;font-size:20px; padding:0 5px;}
+.lskdo{ width:40px; text-align:center; }
+
