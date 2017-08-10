@@ -29,7 +29,7 @@ public class AdAction extends ActionSupport implements ModelDriven<Ad> {
 	}
 	
 	//*****************************************用户操作******************************************************
-	//查找后四条广告信息
+	//查找后四条广告
 	public String findAds(){
 		System.out.println("================================find the davertises=========================================");
 		setAds(adService.findAds());
