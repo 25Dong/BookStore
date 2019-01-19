@@ -1,0 +1,13 @@
+/target/
+/.classpath
+/catalina.base_IS_UNDEFINED/
+#idea
+.idea/
+/idea/
+*.ipr
+*.iml
+*.iws
+/${catalina.base}/temp/*
+/.metadata/**
+/.classpath/**
+/.settings/**
