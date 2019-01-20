@@ -1,8 +1,3 @@
 eclipse.preferences.version=1
 encoding//WebRoot/WEB-INF/web.xml=UTF-8
-encoding//WebRoot/jsp/jspOfHao/error.jsp=UTF-8
-encoding//WebRoot/jsp/jspOfLiang/ListCart.jsp=UTF-8
-encoding//src/org/crazyit/booksys/action/BuyAction.java=UTF-8
-encoding//src/org/crazyit/booksys/action/OrderAction.java=UTF-8
-encoding//src/org/crazyit/booksys/service/BookService.java=UTF-8
-encoding//src/org/crazyit/test/MyAspect.java=UTF-8
+encoding/<project>=UTF-8
