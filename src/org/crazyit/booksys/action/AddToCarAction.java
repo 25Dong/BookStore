@@ -26,6 +26,7 @@ public class AddToCarAction extends ActionSupport {
 	private Integer[] carsid;
 	private List<Integer> bookIds;
 	private Integer[] ids;
+	
 	//ÐÞ¸Ä¹ºÎï³µ×´Ì¬
 	public String changestate(){
 		for(int i = 0;i<bookIds.size();i++){
