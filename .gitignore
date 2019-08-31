@@ -1,13 +1,38 @@
-/target/
-/.classpath
-/catalina.base_IS_UNDEFINED/
+*.class
+
+#package file
+*.war
+*.ear
+
+#kdiff3 ignore
+*.orig
+
+#maven ignore
+target/
+
+
+#eclipse ignore
+.settings
+.project
+.classpatch
+
 #idea
 .idea/
 /idea/
 *.ipr
 *.iml
 *.iws
-/${catalina.base}/temp/*
-/.metadata/**
-/.classpath/**
-/.settings/**
+
+temp file
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+#system ignore
+.DS_Store
+Thumbs.db
+
+/catalina.base_IS_UNDEFINED/
+Mysrc/jdbc.properties
