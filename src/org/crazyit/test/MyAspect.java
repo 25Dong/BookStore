@@ -35,7 +35,7 @@ public class MyAspect {
 	public void myAfterThrowing(JoinPoint joinPoint, Throwable e) {
 		System.out.println("异常通知" + "出错" + e.getMessage());
 	}
-	// �?��通知
+	// 后置通知
 	public void myAfter() {
 		System.out.println("后置通知");
 	}

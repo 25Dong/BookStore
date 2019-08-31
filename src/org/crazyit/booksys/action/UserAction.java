@@ -14,19 +14,19 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 /**
  * 
- * @author Ò×³Ğ¶«
+ * @author æ˜“æ‰¿ä¸œ
  *
  */
 @SuppressWarnings("serial")
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 
-	private List<Car> cars;//±£´æÓÃ»§¹ºÎï³µµÄĞÅÏ¢
-	private List<Order> orders;//±£´æÓÃ»§¶©µ¥ĞÅÏ¢
-	private List<User> users;//±£´æLike²éÕÒµ½µÄÓÃ»§
+	private List<Car> cars;//ä¿å­˜ç”¨æˆ·è´­ç‰©è½¦çš„ä¿¡æ¯
+	private List<Order> orders;//ä¿å­˜ç”¨æˆ·è®¢å•ä¿¡æ¯
+	private List<User> users;//ä¿å­˜LikeæŸ¥æ‰¾åˆ°çš„ç”¨æˆ·
 	private String uploadFileName;
-	User editUser;//±£´æ±à¼­µÄÓÃ»§ĞÅÏ¢
-	private int flag;//ÓÃÓÚÒ³ÃæÅĞ¶ÏµÄ±êÖ¾
-	//Çı¶¯Ä£ĞÍ
+	User editUser;//ä¿å­˜ç¼–è¾‘çš„ç”¨æˆ·ä¿¡æ¯
+	private int flag;//ç”¨äºé¡µé¢åˆ¤æ–­çš„æ ‡å¿—
+	//é©±åŠ¨æ¨¡å‹
 	User user = new User();
 	@Override
 	public User getModel() {
@@ -40,58 +40,58 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		this.user = use;
 	}
 
-	//×¢ÈëService²ãµÄÀà
+	//æ³¨å…¥Serviceå±‚çš„ç±»
 	private UserService userService;
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	private CarService carService;	//¹º³µ³µ
+	private CarService carService;	//è´­è½¦è½¦
 	public void setCarService(CarService carService) {
 		this.carService = carService;
 	}
-	private OrderService orderService;//¶©µ¥
+	private OrderService orderService;//è®¢å•
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
-	//*******************************************ÓÃ»§²Ù×÷*****************************************
-	//×¢²áĞ£Ñé
+	//*******************************************ç”¨æˆ·æ“ä½œ*****************************************
+	//æ³¨å†Œæ ¡éªŒ
 	public void validateRegister(){
 		setFlag(1);
 	}
-	//ÓÃ»§×¢²á
+	//ç”¨æˆ·æ³¨å†Œ
 	public String register(){
-		user.setRegistDate(new Date());//ÉèÖÃ×¢²áÊ±¼äÊôĞÔ
-		String password=userService.encoderByMd5(user.getUserPassword());   //MD5¼ÓÃÜ
-		user.setUserPassword(password);//¼ÓÃÜµÄÃÜÂë
+		user.setRegistDate(new Date());//è®¾ç½®æ³¨å†Œæ—¶é—´å±æ€§
+		String password=userService.encoderByMd5(user.getUserPassword());   //MD5åŠ å¯†
+		user.setUserPassword(password);//åŠ å¯†çš„å¯†ç 
 		user.setRuserPassword(password);
 		User exitUser = userService.registerCheck(user);
 		if(exitUser != null){
-			this.addActionError("¸ÃÓÃ»§Ãû»òÊÖ»úºÅÒÑ±»×¢²á£¡ÇëÖØĞÂÌîĞ´");
+			this.addActionError("è¯¥ç”¨æˆ·åæˆ–æ‰‹æœºå·å·²è¢«æ³¨å†Œï¼è¯·é‡æ–°å¡«å†™");
 			return "registerCheckError";
 		}else{
 			int result = userService.register(user);
 			if(result>0){
-				System.out.println("ÓÃ»§×¢²á³É¹¦");
+				System.out.println("ç”¨æˆ·æ³¨å†ŒæˆåŠŸ");
 				return "registerSuccess";
 			}else{
-				System.out.println("ÓÃ»§×¢²áÊ§°Ü");
-				this.addActionError("¶Ô²»Æğ£¡×¢²áÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ");
+				System.out.println("ç”¨æˆ·æ³¨å†Œå¤±è´¥");
+				this.addActionError("å¯¹ä¸èµ·ï¼æ³¨å†Œå¤±è´¥ï¼Œè¯·ç¨åå†è¯•");
 				return "regisError";
 			}
 		}
 
 	}
-	//µÇÂ¼ÑéÖ¤
+	//ç™»å½•éªŒè¯
 	public String loginCheck(){
-		String password=userService.encoderByMd5(user.getUserPassword());//MD5¼ÓÃÜ
-		user.setUserPassword(password);//¼ÓÃÜµÄÃÜÂë
+		String password=userService.encoderByMd5(user.getUserPassword());//MD5åŠ å¯†
+		user.setUserPassword(password);//åŠ å¯†çš„å¯†ç 
 		user.setRuserPassword(password);
 		User exitUser = userService.loginCheck(user);
 		if(exitUser == null){
-			this.addActionError("µÇÂ¼Ê§°Ü£¡ÓÃ»§Ãû»òÕßÃÜÂë´íÎó£¡");
+			this.addActionError("ç™»å½•å¤±è´¥ï¼ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯ï¼");
 			return "loginError";
 		}else{
-			System.out.println("================================ÓÃ»§µÇÂ¼³É¹¦Ìø×ªµ½Ö÷Ò³Ãæ=========================================");
+			System.out.println("================================ç”¨æˆ·ç™»å½•æˆåŠŸè·³è½¬åˆ°ä¸»é¡µé¢=========================================");
 			ActionContext.getContext().getSession().put("exitUser", exitUser);
 			ActionContext context = ActionContext.getContext();
 			context.getSession().put("status", "islogin");
@@ -101,23 +101,23 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		}
 
 	}
-	//ÓÃ»§ÍË³öµÇÂ¼
+	//ç”¨æˆ·é€€å‡ºç™»å½•
 	public String exitLogin(){
 		ActionContext.getContext().getSession().clear();
 		return "exitLogin";
 	}
-	//¸ù¾İÓÃ»§id²éÕÒÓÃ»§ĞÅÏ¢
+	//æ ¹æ®ç”¨æˆ·idæŸ¥æ‰¾ç”¨æˆ·ä¿¡æ¯
 	public void findUserByID(){
 		editUser = userService.find(user.getUserId());
 	}
-	//Ìø×ªµ½¸üĞÂÓÃ»§£¬Ê×ÏÈÒª¸ù¾İid²éÕÒÒªĞŞ¸ÄµÄÓÃ»§ĞÅÏ¢
+	//è·³è½¬åˆ°æ›´æ–°ç”¨æˆ·ï¼Œé¦–å…ˆè¦æ ¹æ®idæŸ¥æ‰¾è¦ä¿®æ”¹çš„ç”¨æˆ·ä¿¡æ¯
 	public String edit(){
-		System.out.println("userActionµã»÷ÓÃ»§¹ÜÀí´«¹ıÀ´µÄÓÃ»§idÊÇ"+user.getUserId());
+		System.out.println("userActionç‚¹å‡»ç”¨æˆ·ç®¡ç†ä¼ è¿‡æ¥çš„ç”¨æˆ·idæ˜¯"+user.getUserId());
 		editUser = userService.find(user.getUserId());
-		System.out.println("userActionÀà"+"±à¼­ÊÇ²éÕÒµ½µÄÓÃ»§ĞÅÏ¢ÊÇ"+editUser.getUserName());
-		//»ñÈ¡¸ÃÓÃ»§µÄ¹º³µĞÅÏ¢
+		System.out.println("userActionç±»"+"ç¼–è¾‘æ˜¯æŸ¥æ‰¾åˆ°çš„ç”¨æˆ·ä¿¡æ¯æ˜¯"+editUser.getUserName());
+		//è·å–è¯¥ç”¨æˆ·çš„è´­è½¦ä¿¡æ¯
 		setCars(carService.getAllCarsById(editUser.getUserId())); 
-		//»ñÈ¡¸ÃÓÃ»§µÄ¶©µ¥ĞÅÏ¢
+		//è·å–è¯¥ç”¨æˆ·çš„è®¢å•ä¿¡æ¯
 		setOrders(orderService.getUserAllOrders(editUser.getUserId())); 
 		return "editSuccess";
 
@@ -125,25 +125,25 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	//update
 	public  String update(){
 		userService.uadateUser(user);
-		return "updateSu";//Ìø×ªµ½ÉÏ´«Í¼Æ¬µÄaction
+		return "updateSu";//è·³è½¬åˆ°ä¸Šä¼ å›¾ç‰‡çš„action
 	}
 
-	//¸üĞÂÓÃ»§µÄÃÜÂë
+	//æ›´æ–°ç”¨æˆ·çš„å¯†ç 
 	public String updatePassWord(){
-		System.out.println("¼ÓÃÜÇ°µÄ²âÊÔÃÜÂëÊÇ"+user.getTestPassWord());
+		System.out.println("åŠ å¯†å‰çš„æµ‹è¯•å¯†ç æ˜¯"+user.getTestPassWord());
 		String passwordTest=userService.encoderByMd5(user.getTestPassWord());
 		user.setTestPassWord(passwordTest);
-		System.out.println("ÊäÈëµÄ²âÊÔÃÜÂëÊÇ"+user.getTestPassWord());
-		System.out.println("Ô­±¾µÄµÄÃÜÂëÊÇ"+user.getUserPassword());
-		System.out.println("ÊäÈëµÄĞÂÃÜÂëÊÇ"+user.getNewPassword());
-		System.out.println("ÊäÈëµÄµÄÈ·ÈÏÃÜÂëÊÇ"+user.getRuserPassword());
+		System.out.println("è¾“å…¥çš„æµ‹è¯•å¯†ç æ˜¯"+user.getTestPassWord());
+		System.out.println("åŸæœ¬çš„çš„å¯†ç æ˜¯"+user.getUserPassword());
+		System.out.println("è¾“å…¥çš„æ–°å¯†ç æ˜¯"+user.getNewPassword());
+		System.out.println("è¾“å…¥çš„çš„ç¡®è®¤å¯†ç æ˜¯"+user.getRuserPassword());
 		if(!(user.getUserPassword().equals(user.getTestPassWord()))){
-			System.out.println("ÓÃ»§ÊäÈëµÄ¾ÉÃÜÂë´íÎó");
-			this.addActionError("¸ü¸ÄÃÜÂëÊ§°Ü£¡ÊäÈë¾ÉÃÜÂë´íÎó£¡");
+			System.out.println("ç”¨æˆ·è¾“å…¥çš„æ—§å¯†ç é”™è¯¯");
+			this.addActionError("æ›´æ”¹å¯†ç å¤±è´¥ï¼è¾“å…¥æ—§å¯†ç é”™è¯¯ï¼");
 			return "updatePwdError";
 		}else if(!(user.getRuserPassword().equals(user.getNewPassword()))){
-			System.out.println("ÓÃ»§Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ");
-			this.addActionError("¸üĞÂÃÜÂëÊ§°Ü£¡Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ£¡");
+			System.out.println("ç”¨æˆ·ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´");
+			this.addActionError("æ›´æ–°å¯†ç å¤±è´¥ï¼ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´ï¼");
 			return "updatePwdError";
 		}else{
 			String passwordNew=userService.encoderByMd5(user.getNewPassword());
@@ -153,13 +153,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		}
 
 	}
-	//ÓÃ»§¸üĞÂÍ·Ïñ
+	//ç”¨æˆ·æ›´æ–°å¤´åƒ
 	public String updatePhoto(){
 		userService.uadateUser(user);
 		return "updatePhoto";
 	}
-	//*************************************************¹ÜÀíÔ±²Ù×÷*****************************
-	//·ÖÒ³ÏÔÊ¾
+	//*************************************************ç®¡ç†å‘˜æ“ä½œ*****************************
+	//åˆ†é¡µæ˜¾ç¤º
 	private int currPage =1;
 	public String userList(){
 		PageBean<User> pageBean = userService.findBypage(currPage);
@@ -169,28 +169,28 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public void setCurrPage(int currPage) {
 		this.currPage = currPage;
 	}
-	//É¾³ıÓÃ»§
+	//åˆ é™¤ç”¨æˆ·
 	public String delete(){
 		userService.deleteUser(user.getUserId());
 		return "deleteUserSu";
 	}
-	//·ÖÒ³like²éÕÒÓÃ»§
+	//åˆ†é¡µlikeæŸ¥æ‰¾ç”¨æˆ·
 	public String findLikeUser(){
 		ActionContext.getContext().getSession().put("likeUserName", user.getUserName());
 		PageBean<User> pageBean = userService.findLikeUser(user.getUserName(),currPage);
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "findLikeUserSu";
 	}
-	//¸ù¾İÓÃ»§id²éÕÒÓÃ»§µÄ¹ºÎï³µĞÅÏ¢
+	//æ ¹æ®ç”¨æˆ·idæŸ¥æ‰¾ç”¨æˆ·çš„è´­ç‰©è½¦ä¿¡æ¯
 	public void findCartOfUser(){
 		setCars(carService.getAllCarsById(editUser.getUserId())); 
 	}
-	//¸ù¾İÓÃ»§id²éÕÒ¶©µ¥ĞÅÏ¢
+	//æ ¹æ®ç”¨æˆ·idæŸ¥æ‰¾è®¢å•ä¿¡æ¯
 	public void findOderOfUser(){
 		setOrders(orderService.getUserAllOrders(editUser.getUserId())); 
 	}
 
-	//******************************ÊôĞÔµÄgetºÍset·½·¨*****************************
+	//******************************å±æ€§çš„getå’Œsetæ–¹æ³•*****************************
 	public List<Order> getOrders() {
 		return orders;
 	}

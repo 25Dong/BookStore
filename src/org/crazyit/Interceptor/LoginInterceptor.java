@@ -3,26 +3,26 @@ package org.crazyit.Interceptor;
 import java.util.Map;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
 public class LoginInterceptor extends AbstractInterceptor {
 
+
 	@Override
 	public String intercept(ActionInvocation arg) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("½øÈëÀ¹½ØÆ÷");
+		System.out.println("è¿›å…¥æ‹¦æˆªå™¨");
 		Map session = arg.getInvocationContext().getSession();
 		String status = (String)session.get("status");
 		if(status!=null&&!status.equals("")&&status.equals("islogin")){
-			System.out.println("³É¹¦µÇÂ½");
+			System.out.println("æˆåŠŸç™»é™†");
 			
 			
 			return arg.invoke();
 		}else{
-			System.out.println("µÇÂ½Ê§°Ü");
-			session.put("errorMsg", "Äú»¹Ã»µÇÂ¼£¬ÇëµÇÂ¼£¡");
+			System.out.println("ç™»é™†å¤±è´¥");
+			session.put("errorMsg", "æ‚¨è¿˜æ²¡ç™»å½•ï¼Œè¯·ç™»å½•ï¼");
 			return Action.INPUT;
 		}
 		
